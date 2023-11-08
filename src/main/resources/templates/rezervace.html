@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>User List</title>
+    <link rel="stylesheet" type="text/css" href="static\style.css" th:href="@{/css/styles.css}" />
+</head>
+<body>
+    <h1>rezervace List</h1>
+    <a href="http://localhost:8080/autoPujcovna">home</a>
+    <form th:action="@{rezervace/add}" method="get">
+        <button type="submit">Add</button>
+    </form>
+    <table>
+        <tr>
+            <th>User</th>
+            <th>Car</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+        </tr>
+        
+        <tr th:each="rezervace : ${rezervace}">
+            <td th:text="${rezervace.user.username}"></td>
+            <td th:text="${rezervace.vozidla.Model}"></td>
+            <td th:text="${rezervace.startDate}"></td>
+            <td th:text="${rezervace.endDate}"></td>
+            <td th:text="${rezervace.id}"></td>
+            <td>
+            <form th:action="@{rezervace/{id}(id=${rezervace.id})}" method="delete">
+                <input type="hidden" name="_deleteMethod" value="delete" />
+                <button type="submit">Delete</button>
+            </form>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

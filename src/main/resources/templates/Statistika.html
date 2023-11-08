@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>stat</title>
+</head>
+
+<body>
+    <a href="http://localhost:8080/autoPujcovna">home</a>
+    <h1>Statistika</h1>
+    <table>
+
+        <tr>
+            <th>ID</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Pocet Rezervací</th>
+        </tr>
+
+        <tr th:each="user : ${users}">
+            <td th:text="${user.id}"></td>
+            <td th:text="${user.username}"></td>
+            <td th:text="${user.email}"></td>
+            <td th:text="${user.pocetRezervaci}"></td>
+        </tr>
+
+        <tr>
+            <p>Reservation user prumer: <span th:text="${avgUser}"></span></p>
+            <p>Reservation vozidla prumer: <span th:text="${avgVozidla}"></span></p>
+        </tr>
+        <tr>
+            <p>user co si nejvíc pučuje: <span th:text="${userRezervace}"></span></p>
+            <p>auto co se nejvíce pučuje: <span th:text="${vozidlaRezervace}"></span></p>
+        </tr>
+    </table>
+</body>
+
+</html>

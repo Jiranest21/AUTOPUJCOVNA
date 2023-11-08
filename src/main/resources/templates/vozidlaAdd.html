@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Add User</h1>
+
+        <form th:action="@{/autoPujcovna/vozidla/add}" method="post" th:object="${Vozidla}">
+
+            <label for="model">Model:</label>
+            <input type="text" id="model" th:field="*{model}" required="required" />
+
+            <label for="znacka">Znacka:</label>
+            <input type="text" id="znacka" th:field="*{znacka}" required="required" />
+
+            <label for="rokVyroby">Rok Vyroby:</label>
+            <input type="text" id="rokVyroby" th:field="*{rokVyroby}" required="required" />
+
+            <button type="submit">Add vozidlo</button>
+        </form>
+    </div>
+</body>
+
+</html>

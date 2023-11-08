@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add User</title>
+    <link rel="stylesheet" type="text/css" href="static\addUser.css" th:href="@{/css/styles.css}" />
+</head>
+<body>
+    <div class="container">
+        <h1>Add Rezervace</h1>
+        
+        <form th:object="${rezervace}" th:action="@{add}" method="post">
+            <select th:field="*{user}">
+                <option th:each="user : ${userList}" th:value="${user.id}" th:text="${user.username}"></option>
+            </select>
+            <select th:field="*{vozidla}">
+                <option th:each="vozidla : ${vozidlaList}" th:value="${vozidla.id}" th:text="${vozidla.Model}"></option>
+            </select>
+            <input type="date" th:field="*{startDate}" placeholder="Start Date"/>
+            <input type="date" th:field="*{endDate}" placeholder="End Date"/>
+            <button type="submit">Submit</button>
+        </form>
+
+    </div>
+</body>
+</html>

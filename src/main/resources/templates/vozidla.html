@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="http://localhost:8080/autoPujcovna">home</a>
+    <h1>Vozidla</h1>
+    <form th:action="@{vozidla/add}" method="get">
+        <button type="submit">Add</button>
+    </form>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Model</th>
+            <th>Znacka</th>
+        </tr>
+        
+        <tr th:each="vozidla : ${vozidla}">
+            <td th:text="${vozidla.id}"></td>
+            <td th:text="${vozidla.Model}"></td>
+            <td th:text="${vozidla.Znacka}"></td>
+            <td>
+                <form th:action="@{vozidla/{id}(id=${vozidla.id})}" method="delete">
+                    <input type="hidden" name="_deleteMethod" value="delete" />
+                    <button type="submit">Delete</button>
+                </form>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
